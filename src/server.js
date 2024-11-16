@@ -3,12 +3,14 @@ import pino from 'pino';
 import { pinoHttp } from 'pino-http';
 import cors from 'cors';
 
+import { env } from './env.js';
+
 import {
   getAllContacts,
   getContactById,
 } from './controlers/contactsControler.js';
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(env('PORT', '3000'));
 
 export const setupServer = () => {
   const app = express();
