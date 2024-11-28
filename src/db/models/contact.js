@@ -9,8 +9,8 @@ const ContactSchema = new Schema(
     contactType: {
       type: String,
       enum: ['work', 'home', 'personal'],
-      reqired: true,
       default: 'personal',
+      reqired: true,
     },
   },
   { timestamps: true, versionKey: false },
