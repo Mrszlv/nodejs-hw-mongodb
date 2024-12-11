@@ -27,23 +27,23 @@ router.use(authenticate);
 
 router.get(
   '/',
-  checkRoles(ROLES.ADMIN),
   authenticate,
+  checkRoles(ROLES.ADMIN),
   ctrlWrapper(getContactsController),
 );
 
 router.get(
   '/:contactId',
-  checkRoles(ROLES.ADMIN, ROLES.USER),
   authenticate,
+  checkRoles(ROLES.ADMIN, ROLES.USER),
   isValidId,
   ctrlWrapper(getContactByIdController),
 );
 
 router.post(
   '/',
-  checkRoles(ROLES.ADMIN),
   authenticate,
+  checkRoles(ROLES.ADMIN),
   jsonParser,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
@@ -51,8 +51,8 @@ router.post(
 
 router.patch(
   '/:contactId',
-  checkRoles(ROLES.ADMIN, ROLES.USER),
   authenticate,
+  checkRoles(ROLES.ADMIN, ROLES.USER),
   isValidId,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
@@ -60,8 +60,8 @@ router.patch(
 
 router.delete(
   '/:contactId',
-  checkRoles(ROLES.ADMIN),
   authenticate,
+  checkRoles(ROLES.ADMIN),
   isValidId,
   ctrlWrapper(deleteContactController),
 );
