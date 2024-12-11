@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import express from 'express';
 
 import {
   createContactController,
@@ -12,37 +13,57 @@ import {
   updateContactSchema,
 } from '../validation/contacts.js';
 
-import { crtlWrapper } from '../utils/ctrlWrapper.js';
+import { ctrlWrapper } from '../utils/ctrlWrapper.js';
+import { checkRoles } from '../middlewares/checkRoles.js';
+
 import { isValidId } from '../middlewares/isValidId.js';
 import { validateBody } from '../middlewares/validateBody.js';
+import { authenticate } from '../middlewares/authenticate.js';
+import { ROLES } from '../constans/constans.js';
 
+const jsonParser = express.json();
 const router = Router();
-
-router.get('/contacts', crtlWrapper(getContactsController));
+router.use(authenticate);
 
 router.get(
-  '/contacts/:contactId',
+  '/',
+  checkRoles(ROLES.ADMIN),
+  authenticate,
+  ctrlWrapper(getContactsController),
+);
+
+router.get(
+  '/:contactId',
+  checkRoles(ROLES.ADMIN, ROLES.USER),
+  authenticate,
   isValidId,
-  crtlWrapper(getContactByIdController),
+  ctrlWrapper(getContactByIdController),
 );
 
 router.post(
-  '/contacts',
+  '/',
+  checkRoles(ROLES.ADMIN),
+  authenticate,
+  jsonParser,
   validateBody(createContactSchema),
-  crtlWrapper(createContactController),
+  ctrlWrapper(createContactController),
 );
 
 router.patch(
-  '/contacts/:contactId',
+  '/:contactId',
+  checkRoles(ROLES.ADMIN, ROLES.USER),
+  authenticate,
   isValidId,
   validateBody(updateContactSchema),
-  crtlWrapper(patchContactController),
+  ctrlWrapper(patchContactController),
 );
 
 router.delete(
-  '/contacts/:contactId',
+  '/:contactId',
+  checkRoles(ROLES.ADMIN),
+  authenticate,
   isValidId,
-  crtlWrapper(deleteContactController),
+  ctrlWrapper(deleteContactController),
 );
 
 export default router;

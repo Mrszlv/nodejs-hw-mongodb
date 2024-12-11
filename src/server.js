@@ -3,17 +3,19 @@ import pino from 'pino';
 import { pinoHttp } from 'pino-http';
 import cors from 'cors';
 
-import contactsRouter from './routers/contacts.js';
+import router from './routers/index.js';
 
 import { env } from './utils/env.js';
 
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(env('PORT', '3000'));
 
 export const setupServer = () => {
   const app = express();
+
   app.use(express.json());
 
   const logger = pino({
@@ -23,12 +25,13 @@ export const setupServer = () => {
 
   app.use(cors());
   app.use(pinoHttp({ logger }));
+  app.use(cookieParser());
 
   app.get('/', (req, res) => {
     res.json({ message: 'Helo world!' });
   });
 
-  app.use(contactsRouter);
+  app.use(router);
   app.use('*', notFoundHandler);
   app.use(errorHandler);
 
