@@ -1,18 +1,11 @@
 import { model, Schema } from 'mongoose';
-import { ROLES } from '../../constans/constans.js';
 
 const usersSchema = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: {
-      type: String,
-      enum: [ROLES.ADMIN, ROLES.USER],
-      default: ROLES.USER,
-    },
   },
-
   { timestamps: true, versionKey: false },
 );
 

@@ -16,13 +16,16 @@ export const getContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
   const { sortBy, sortOrder } = parseSortParams(req.query);
   const filter = parseFilterParams(req.query);
+  const { user } = req;
   const contacts = await getAllContacts({
     page,
     perPage,
     sortBy,
     sortOrder,
     filter,
+    user,
   });
+  if (!contacts) throw createHttpError(404, 'Contact not found');
   res.json({
     status: 200,
     message: 'Successfully found contacts!',
@@ -32,7 +35,8 @@ export const getContactsController = async (req, res) => {
 
 export const getContactByIdController = async (req, res) => {
   const { contactId } = req.params;
-  const contact = await getContactById(contactId);
+  const { user } = req;
+  const contact = await getContactById(contactId, user);
   if (!contact) {
     throw createHttpError(404, 'Contact not found');
   }
@@ -44,17 +48,25 @@ export const getContactByIdController = async (req, res) => {
 };
 
 export const createContactController = async (req, res) => {
-  const contact = await createContact(req.body);
-  res.status(201).json({
+  if (!req.body || Object.keys(req.body).length === 0) {
+    throw createHttpError(400, 'Request body is missing');
+  }
+  const { user } = req;
+
+  const result = await createContact({ ...req.body, userId: user._id });
+  if (!result) throw createHttpError(404, 'Filed to create a contact');
+
+  res.json({
     status: 201,
     message: 'Successfully created a contact!',
-    data: contact,
+    data: result,
   });
 };
 
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
-  const result = await updateContact(contactId, req.body);
+  const { user } = req;
+  const result = await updateContact(contactId, user, req.body);
   if (!result) {
     next(createHttpError(404, 'Contact not found'));
     return;
@@ -68,10 +80,12 @@ export const patchContactController = async (req, res, next) => {
 
 export const deleteContactController = async (req, res, next) => {
   const { contactId } = req.params;
-  const contact = await deleteContact(contactId);
+  const { user } = req;
+
+  const contact = await deleteContact(contactId, user);
   if (!contact) {
     next(createHttpError(404, 'Contact not found'));
     return;
   }
-  res.status(204).send();
+  res.status(204).end();
 };
