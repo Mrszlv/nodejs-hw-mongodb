@@ -158,4 +158,8 @@ export const resetPassword = async (payload) => {
     { _id: user._id },
     { password: encryptedPassword },
   );
+  const session = await SessionCollection.findOne({ userId: user._id });
+  if (session) {
+    await SessionCollection.deleteOne({ userId: user._id });
+  }
 };
