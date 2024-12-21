@@ -11,6 +11,10 @@ import createHttpError from 'http-errors';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
+// import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
+
+import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
+// import { env } from '../utils/env.js';
 
 export const getContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
@@ -48,12 +52,24 @@ export const getContactByIdController = async (req, res) => {
 };
 
 export const createContactController = async (req, res) => {
+  const photo = req.file;
+
+  let photoUrl;
+
+  if (photo) {
+    const result = await saveFileToCloudinary(req.file.path);
+    photoUrl = result;
+  }
   if (!req.body || Object.keys(req.body).length === 0) {
     throw createHttpError(400, 'Request body is missing');
   }
   const { user } = req;
 
-  const result = await createContact({ ...req.body, userId: user._id });
+  const result = await createContact({
+    ...req.body,
+    userId: user._id,
+    photo: photoUrl,
+  });
   if (!result) throw createHttpError(404, 'Filed to create a contact');
 
   res.json({
@@ -66,7 +82,19 @@ export const createContactController = async (req, res) => {
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
   const { user } = req;
-  const result = await updateContact(contactId, user, req.body);
+  const photo = req.fle;
+
+  let photoUrl;
+
+  if (photo) {
+    const result = await saveFileToCloudinary(req.file.path);
+    photoUrl = result;
+  }
+
+  const result = await updateContact(contactId, user, {
+    ...req.body,
+    photo: photoUrl,
+  });
   if (!result) {
     next(createHttpError(404, 'Contact not found'));
     return;
