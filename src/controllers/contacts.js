@@ -28,7 +28,7 @@ export const getContactsController = async (req, res) => {
     user,
   });
   if (!contacts) throw createHttpError(404, 'Contact not found');
-  res.json({
+  res.status(200).json({
     status: 200,
     message: 'Successfully found contacts!',
     data: contacts,
@@ -42,7 +42,7 @@ export const getContactByIdController = async (req, res) => {
   if (!contact) {
     throw createHttpError(404, 'Contact not found');
   }
-  res.json({
+  res.status(200).json({
     status: 200,
     message: `Succesfully found contact width id ${contactId}`,
     data: contact,
@@ -70,7 +70,7 @@ export const createContactController = async (req, res) => {
   });
   if (!result) throw createHttpError(404, 'Filed to create a contact');
 
-  res.json({
+  res.status(201).json({
     status: 201,
     message: 'Successfully created a contact!',
     data: result,
@@ -97,7 +97,7 @@ export const patchContactController = async (req, res, next) => {
     next(createHttpError(404, 'Contact not found'));
     return;
   }
-  res.json({
+  res.status(200).json({
     status: 200,
     message: 'Successfully patched a contact!',
     data: result.contact,
