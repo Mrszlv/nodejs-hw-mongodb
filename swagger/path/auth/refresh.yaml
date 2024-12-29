@@ -1,0 +1,42 @@
+tags:
+  - Auth
+summary: Refresh user token
+operationId: refreshUser
+description: 'Refresh user token'
+security:
+  - bearerAuth: []
+  - cookieAuth: []
+responses:
+  '200':
+    description: 'Successful token refresh'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              description: 'Response status'
+              example: 200
+            message:
+              type: string
+              description: 'Response message'
+              example: 'Token refreshed successfully'
+            data:
+              type: object
+              description: 'Response data'
+              properties:
+                accessToken:
+                  type: string
+                  description: 'Access token'
+                  example: 'lK9l8Cpmp+lMcxgaaM3xr7+5Ku9cQmCozO/qiTmu'
+  '401':
+    $ref: '../../components/responses/auth/401.yaml'
+  '404':
+    $ref: '../../components/responses/auth/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

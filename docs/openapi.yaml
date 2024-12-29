@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Students app
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: This is a documentation of students app
+tags:
+  - name: Students
+    description: Operations about users.
+  - name: Auth
+    description: Auth operations.
+servers:
+  - url: http://localhost:3000
+  - url: https://nodejs-hw-mongodb-1chh.onrender.com
+paths:
+  /contacts:
+    get:
+      $ref: '../swagger/path/contacts/get.yaml'
+    post:
+      $ref: '../swagger/path/contacts/post.yaml'
+  /contacts/{contactId}:
+    get:
+      $ref: '../swagger/path/contacts/{id}/get.yaml'
+    patch:
+      $ref: '../swagger/path/contacts/{id}/patch.yaml'
+    delete:
+      $ref: '../swagger/path/contacts/{id}/delete.yaml'
+  /register:
+    post:
+      $ref: '../swagger/path/auth/register.yaml'
+  /login:
+    post:
+      $ref: '../swagger/path/auth/login.yaml'
+  /logout:
+    post:
+      $ref: '../swagger/path/auth/logout.yaml'
+  /refresh:
+    post:
+      $ref: '../swagger/path/auth/refresh.yaml'
+  /send-reset-email:
+    post:
+      $ref: '../swagger/path/auth/resetEmail.yaml'
+  /reset-pwd:
+    post:
+      $ref: '../swagger/path/auth/resetPwd.yaml'
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: refreshToken
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

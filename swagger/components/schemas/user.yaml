@@ -1,0 +1,32 @@
+type: object
+required:
+  - name
+  - email
+  - password
+properties:
+  _id:
+    type: string
+    description: 'User id'
+    example: 67387993d539a636be3feb9e
+  name:
+    type: string
+    description: 'User name'
+    example: 'John Doe'
+  email:
+    type: string
+    description: 'User email'
+    example: jojndoe@mail.com
+  password:
+    type: string
+    description: 'User password'
+    example: 'password'
+  createdAt:
+    type: string
+    format: date-time
+    description: 'User creation date'
+    example: '2022-02-17T00:00:00.000Z'
+  updatedAt:
+    type: string
+    format: date-time
+    description: 'User update date'
+    example: '2022-02-17T00:00:00.000Z'

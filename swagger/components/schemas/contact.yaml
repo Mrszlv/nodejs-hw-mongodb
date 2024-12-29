@@ -1,0 +1,49 @@
+type: object
+required:
+  - name
+  - phoneNumber
+  - contactType
+  - userId
+properties:
+  _id:
+    type: string
+    description: 'Contact id'
+    example: 67387993d539a636be3feb9e
+  name:
+    type: string
+    description: 'Contact name'
+    example: 'John Doe'
+  phoneNumber:
+    type: string
+    description: 'Contact phone number'
+    example: '+1234567890'
+  contactType:
+    type: string
+    description: 'Contact type'
+    example: 'personal'
+  userId:
+    type: string
+    description: 'User id'
+    example: 67387993d539a636be3feb9e
+  email:
+    type: string
+    description: 'Contact email'
+    example: jojndoe@mail.com
+  isFavorite:
+    type: boolean
+    description: 'Contact is favorite'
+    example: false
+  photo:
+    type: string
+    description: 'Contact photo'
+    example: https://res.cloudinary.com/ddqtzq55a/image/upload/v1734705772/szsmhuxt5qhgd6hpuxhk.jpg
+  createdAt:
+    type: string
+    format: date-time
+    description: 'Contact creation date'
+    example: '2022-02-17T00:00:00.000Z'
+  updatedAt:
+    type: string
+    format: date-time
+    description: 'Contact update date'
+    example: '2022-02-17T00:00:00.000Z'
