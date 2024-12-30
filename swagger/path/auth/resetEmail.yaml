@@ -1,0 +1,45 @@
+tags:
+  - Auth
+summary: Reset user email
+operationId: resetEmail
+description: 'Reset user email'
+security: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+        properties:
+          email:
+            type: string
+            format: email
+            description: 'User email'
+            example: jojndoe@mail.com
+responses:
+  '200':
+    description: 'Email reset'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Email reset'
+            data:
+              type: object
+              description: 'User data'
+  '404':
+    $ref: '../../components/responses/auth/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

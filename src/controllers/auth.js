@@ -11,6 +11,9 @@ import createHttpError from 'http-errors';
 import { requestResetToken } from '../servises/auth.js';
 import { resetPassword } from '../servises/auth.js';
 
+import { generateAuthUrl } from '../utils/googleOAuth2.js';
+import { loginOrSignupWithGoogle } from '../servises/auth.js';
+
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
   res.json({

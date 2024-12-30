@@ -1,0 +1,72 @@
+tags:
+  - Contacts
+summary: Create a new contact
+operationId: createContact
+description: 'Create a new contact'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - phoneNumber
+          - contactType
+          - userId
+        properties:
+          name:
+            type: string
+            example: John Doe
+            description: Contact name
+          phoneNumber:
+            type: string
+            example: 1234567890
+            description: Contact phone number
+          email:
+            type: string
+            example: jojndoe@mail.com
+            description: Contact email
+          isFavorite:
+            type: boolean
+            example: false
+            description: Whether the contact is a favorite
+          contactType:
+            type: string
+            enum: [personal, home, work]
+            description: Contact type
+            example: personal
+          photo:
+            type: string
+            example: https://res.cloudinary.com/ddqtzq55a/image/upload/v1734705772/szsmhuxt5qhgd6hpuxhk.jpg
+            description: Contact photo
+responses:
+  '201':
+    description: Contact created
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Contact created
+            data:
+              type: object
+              $ref: '../../components/schemas/contact.yaml'
+  '400':
+    $ref: '../../components/responses/contacts/400.yaml'
+  '401':
+    $ref: '../../components/responses/contacts/401.yaml'
+  '404':
+    $ref: '../../components/responses/contacts/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'
