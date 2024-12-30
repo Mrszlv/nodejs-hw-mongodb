@@ -45,8 +45,8 @@ responses:
               type: object
               description: 'User data'
   '401':
-    $ref: '../../components/responses/auth/401.yaml'
+    $ref: ../../components/responses/auth/auth-401.yaml
   '404':
-    $ref: '../../components/responses/auth/404.yaml'
+    $ref: ../../components/responses/auth/auth-404.yaml
   '500':
     $ref: '../../components/responses/500.yaml'
