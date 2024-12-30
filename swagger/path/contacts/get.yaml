@@ -107,6 +107,6 @@ responses:
                   type: boolean
                   example: true
   '401':
-    $ref: '../../components/responses/contacts/401.yaml'
+    $ref: ../../components/responses/contacts/contacts-401.yaml
   '500':
     $ref: '../../components/responses/500.yaml'

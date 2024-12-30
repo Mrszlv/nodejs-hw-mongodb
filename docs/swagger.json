@@ -2,12 +2,12 @@
   "openapi": "3.1.0",
   "info": {
     "version": "1.0.0",
-    "title": "Students app",
+    "title": "Contacts app",
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "description": "This is a documentation of students app"
+    "description": "This is a documentation of contacts app"
   },
   "servers": [
     {
@@ -19,8 +19,8 @@
   ],
   "tags": [
     {
-      "name": "Students",
-      "description": "Operations about users."
+      "name": "Contacts",
+      "description": "Operations about contacts."
     },
     {
       "name": "Auth",
@@ -187,7 +187,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/responses/401"
+            "$ref": "#/components/responses/contacts-401"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -292,10 +292,10 @@
             "$ref": "#/components/responses/400"
           },
           "401": {
-            "$ref": "#/components/responses/401"
+            "$ref": "#/components/responses/contacts-401"
           },
           "404": {
-            "$ref": "#/components/responses/404"
+            "$ref": "#/components/responses/contacts-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -359,10 +359,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/responses/401"
+            "$ref": "#/components/responses/contacts-401"
           },
           "404": {
-            "$ref": "#/components/responses/404"
+            "$ref": "#/components/responses/contacts-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -472,10 +472,10 @@
             "$ref": "#/components/responses/400"
           },
           "401": {
-            "$ref": "#/components/responses/401"
+            "$ref": "#/components/responses/contacts-401"
           },
           "404": {
-            "$ref": "#/components/responses/404"
+            "$ref": "#/components/responses/contacts-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -511,10 +511,10 @@
             "description": "Contact deleted"
           },
           "401": {
-            "$ref": "#/components/responses/401"
+            "$ref": "#/components/responses/contacts-401"
           },
           "404": {
-            "$ref": "#/components/responses/404"
+            "$ref": "#/components/responses/contacts-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -522,7 +522,7 @@
         }
       }
     },
-    "/register": {
+    "/auyh/register": {
       "post": {
         "tags": [
           "Auth"
@@ -604,7 +604,7 @@
         }
       }
     },
-    "/login": {
+    "/auth/login": {
       "post": {
         "tags": [
           "Auth"
@@ -677,7 +677,7 @@
             }
           },
           "401": {
-            "$ref": "#/components/responses/401-2"
+            "$ref": "#/components/responses/auth-401"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -685,7 +685,7 @@
         }
       }
     },
-    "/logout": {
+    "/auth/logout": {
       "post": {
         "tags": [
           "Auth"
@@ -706,10 +706,10 @@
             "description": "Successful logout"
           },
           "401": {
-            "$ref": "#/components/responses/401-2"
+            "$ref": "#/components/responses/auth-401"
           },
           "404": {
-            "$ref": "#/components/responses/404-2"
+            "$ref": "#/components/responses/auth-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -717,7 +717,7 @@
         }
       }
     },
-    "/refresh": {
+    "/auth/refresh": {
       "post": {
         "tags": [
           "Auth"
@@ -773,10 +773,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/responses/401-2"
+            "$ref": "#/components/responses/auth-401"
           },
           "404": {
-            "$ref": "#/components/responses/404-2"
+            "$ref": "#/components/responses/auth-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -784,7 +784,7 @@
         }
       }
     },
-    "/send-reset-email": {
+    "/auth/send-reset-email": {
       "post": {
         "tags": [
           "Auth"
@@ -845,7 +845,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/404-2"
+            "$ref": "#/components/responses/auth-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -853,7 +853,7 @@
         }
       }
     },
-    "/reset-pwd": {
+    "/auth/reset-pwd": {
       "post": {
         "tags": [
           "Auth"
@@ -920,10 +920,10 @@
             }
           },
           "401": {
-            "$ref": "#/components/responses/401-2"
+            "$ref": "#/components/responses/auth-401"
           },
           "404": {
-            "$ref": "#/components/responses/404-2"
+            "$ref": "#/components/responses/auth-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -1090,80 +1090,6 @@
           }
         }
       },
-      "401": {
-        "description": "Unauthorized error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "status",
-                "message",
-                "data"
-              ],
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 401
-                },
-                "message": {
-                  "type": "string",
-                  "example": "UnauthorizedError"
-                },
-                "data": {
-                  "type": "object",
-                  "required": [
-                    "message"
-                  ],
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Session not found"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "404": {
-        "description": "Not Found error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "status",
-                "message",
-                "data"
-              ],
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 404
-                },
-                "message": {
-                  "type": "string",
-                  "example": "NotFoundError"
-                },
-                "data": {
-                  "type": "object",
-                  "required": [
-                    "message"
-                  ],
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Contact not found"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
       "409": {
         "description": "Conflict error",
         "content": {
@@ -1238,7 +1164,81 @@
           }
         }
       },
-      "401-2": {
+      "contacts-401": {
+        "description": "Unauthorized error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 401
+                },
+                "message": {
+                  "type": "string",
+                  "example": "UnauthorizedError"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Session not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "contacts-404": {
+        "description": "Not Found error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 404
+                },
+                "message": {
+                  "type": "string",
+                  "example": "NotFoundError"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Contact not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "auth-401": {
         "description": "Unauthorized error",
         "content": {
           "application/json": {
@@ -1275,7 +1275,7 @@
           }
         }
       },
-      "404-2": {
+      "auth-404": {
         "description": "Not found error",
         "content": {
           "application/json": {

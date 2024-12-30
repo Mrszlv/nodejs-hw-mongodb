@@ -1,14 +1,14 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Students app
+  title: Contacts app
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  description: This is a documentation of students app
+  description: This is a documentation of contacts app
 tags:
-  - name: Students
-    description: Operations about users.
+  - name: Contacts
+    description: Operations about contacts.
   - name: Auth
     description: Auth operations.
 servers:
@@ -27,22 +27,22 @@ paths:
       $ref: '../swagger/path/contacts/{id}/patch.yaml'
     delete:
       $ref: '../swagger/path/contacts/{id}/delete.yaml'
-  /register:
+  /auyh/register:
     post:
       $ref: '../swagger/path/auth/register.yaml'
-  /login:
+  /auth/login:
     post:
       $ref: '../swagger/path/auth/login.yaml'
-  /logout:
+  /auth/logout:
     post:
       $ref: '../swagger/path/auth/logout.yaml'
-  /refresh:
+  /auth/refresh:
     post:
       $ref: '../swagger/path/auth/refresh.yaml'
-  /send-reset-email:
+  /auth/send-reset-email:
     post:
       $ref: '../swagger/path/auth/resetEmail.yaml'
-  /reset-pwd:
+  /auth/reset-pwd:
     post:
       $ref: '../swagger/path/auth/resetPwd.yaml'
 components:
