@@ -40,7 +40,7 @@ responses:
               example: 200
             message:
               type: string
-              example: 'Password reset'
+              example: Password reset successfully
             data:
               type: object
               description: 'User data'

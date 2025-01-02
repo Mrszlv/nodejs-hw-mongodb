@@ -1,5 +1,6 @@
 type: object
 required:
+  - _id
   - name
   - email
   - password
@@ -19,7 +20,7 @@ properties:
   password:
     type: string
     description: 'User password'
-    example: 'password'
+    example: password
   createdAt:
     type: string
     format: date-time

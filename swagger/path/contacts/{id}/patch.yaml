@@ -2,7 +2,7 @@ tags:
   - Contacts
 summary: Update a contact by ID
 operationId: updateContactById
-description: Updates a contact by ID
+description: 'Updates a contact by ID'
 security:
   - bearerAuth: []
 parameters:
@@ -12,7 +12,7 @@ parameters:
     schema:
       type: string
       example: 65ca67e7ae7f10c88b598384
-    description: The ID of the contact to update
+      description: 'The ID of the contact to update'
 requestBody:
   content:
     multipart/form-data:
@@ -21,31 +21,31 @@ requestBody:
         properties:
           name:
             type: string
-            description: The name of the contact
+            description: 'The name of the contact'
             example: John Doe
           phoneNumber:
             type: string
-            description: The phone number of the contact
-            example: 123-456-7890
+            description: 'The phone number of the contact'
+            example: 1234567890
           email:
             type: string
-            description: The email of the contact
+            description: 'The email of the contact'
             example: jojndoe@mail.com
           isFavorite:
             type: boolean
-            description: Whether the contact is a favorite
+            description: 'Whether the contact is a favorite'
             example: false
           contactType:
             type: string
-            description: The type of the contact
+            description: 'The type of the contact'
             enum: [personal, home, work]
           photo:
+            description: 'Contact photo'
             type: string
-            description: The photo of the contact
-            example: https://res.cloudinary.com/ddqtzq55a/image/upload/v1734705772/szsmhuxt5qhgd6hpuxhk.jpg
+            format: binary
 responses:
   '200':
-    description: Contact updated
+    description: 'Contact updated'
     content:
       application/json:
         schema:
