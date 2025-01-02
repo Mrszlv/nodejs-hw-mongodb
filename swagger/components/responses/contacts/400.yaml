@@ -1,4 +1,4 @@
-description: Bad Request
+description: 'Bad Request'
 content:
   application/json:
     schema:
@@ -21,4 +21,4 @@ content:
           properties:
             message:
               type: string
-              example: 'Invalid request'
+              example: Invalid request.

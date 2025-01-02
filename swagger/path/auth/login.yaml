@@ -22,7 +22,7 @@ requestBody:
             type: string
             format: password
             description: 'The password for login'
-            example: '123456Pm'
+            example: 123456Pm
 responses:
   '200':
     description: Successful operation
@@ -40,14 +40,14 @@ responses:
               example: 200
             message:
               type: string
-              example: 'Login successful'
+              example: Login successful
             data:
               type: object
               properties:
                 accessToken:
                   type: string
                   description: 'Access token'
-                  example: 'lK9l8Cpmp+lMcxgaaM3xr7+5Ku9cQmCozO/qiTmu'
+                  example: lK9l8Cpmp+lMcxgaaM3xr7+5Ku9cQmCozO/qiTmu
   '401':
     $ref: ../../components/responses/auth/auth-401.yaml
   '500':

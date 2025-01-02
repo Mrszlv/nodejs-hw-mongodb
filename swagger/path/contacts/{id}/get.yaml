@@ -2,7 +2,7 @@ tags:
   - Contacts
 summary: Get a contact by ID
 operationId: getContactById
-description: Retrieves a contact by ID
+description: 'Retrieves a contact by ID'
 security:
   - bearerAuth: []
 parameters:
@@ -12,10 +12,10 @@ parameters:
     schema:
       type: string
       example: 65ca67e7ae7f10c88b598384
-    description: The ID of the contact to retrieve
+    description: 'The ID of the contact to retrieve'
 responses:
   '200':
-    description: Contact retrieved
+    description: 'Contact retrieved'
     content:
       application/json:
         schema:

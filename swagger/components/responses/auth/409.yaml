@@ -1,4 +1,4 @@
-description: Conflict error
+description: 'Conflict error'
 content:
   application/json:
     schema:
@@ -21,4 +21,4 @@ content:
           properties:
             message:
               type: string
-              example: 'User already exists.'
+              example: User already exists.

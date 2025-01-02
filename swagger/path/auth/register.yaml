@@ -18,7 +18,7 @@ requestBody:
           name:
             type: string
             description: 'User name'
-            example: 'John Doe'
+            example: John Doe
           email:
             type: string
             format: email
@@ -28,7 +28,7 @@ requestBody:
             type: string
             format: password
             description: 'User password'
-            example: '123456Pm'
+            example: 123456Pm
 responses:
   '201':
     description: 'Created a new user'
@@ -46,7 +46,7 @@ responses:
               example: 201
             message:
               type: string
-              example: 'User created'
+              example: User created
             data:
               type: object
               $ref: '../../components/schemas/user.yaml'

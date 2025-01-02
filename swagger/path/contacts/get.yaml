@@ -10,14 +10,14 @@ parameters:
     name: page
     schema:
       type: integer
-    description: Page number
+    description: 'Page number'
     example: 1
   - in: query
     name: perPage
     schema:
       type: integer
       example: 10
-    description: Number of items per page
+    description: 'Number of items per page'
   - in: query
     name: sortBy
     schema:
@@ -34,30 +34,30 @@ parameters:
           updatedAt,
         ]
       example: name
-    description: Sort by field
+    description: 'Sort by field'
   - in: query
     name: sortOrder
     schema:
       type: string
       enum: [asc, desc]
       example: asc
-    description: Sort order
+    description: 'Sort order'
   - in: query
     name: contactType
     schema:
       type: string
       enum: ['personal', 'work', 'home']
       example: personal
-    description: Filter by contact type
+    description: 'Filter by contact type'
   - in: query
     name: isFavorite
     schema:
       type: boolean
       example: true
-    description: Filter by favorite contacts
+    description: 'Filter by favorite contacts'
 responses:
   '200':
-    description: Successfully found contacts
+    description: 'Successfully found contacts'
     content:
       application/json:
         schema:

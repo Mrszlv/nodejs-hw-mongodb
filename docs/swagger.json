@@ -214,8 +214,7 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -249,9 +248,9 @@
                     "example": "personal"
                   },
                   "photo": {
+                    "description": "Contact photo",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/ddqtzq55a/image/upload/v1734705772/szsmhuxt5qhgd6hpuxhk.jpg",
-                    "description": "Contact photo"
+                    "format": "binary"
                   }
                 }
               }
@@ -293,9 +292,6 @@
           },
           "401": {
             "$ref": "#/components/responses/contacts-401"
-          },
-          "404": {
-            "$ref": "#/components/responses/contacts-404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -388,9 +384,9 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "65ca67e7ae7f10c88b598384"
-            },
-            "description": "The ID of the contact to update"
+              "example": "65ca67e7ae7f10c88b598384",
+              "description": "The ID of the contact to update"
+            }
           }
         ],
         "requestBody": {
@@ -407,7 +403,7 @@
                   "phoneNumber": {
                     "type": "string",
                     "description": "The phone number of the contact",
-                    "example": "123-456-7890"
+                    "example": 1234567890
                   },
                   "email": {
                     "type": "string",
@@ -429,9 +425,9 @@
                     ]
                   },
                   "photo": {
+                    "description": "Contact photo",
                     "type": "string",
-                    "description": "The photo of the contact",
-                    "example": "https://res.cloudinary.com/ddqtzq55a/image/upload/v1734705772/szsmhuxt5qhgd6hpuxhk.jpg"
+                    "format": "binary"
                   }
                 }
               }
@@ -908,7 +904,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Password reset"
+                      "example": "Password reset successfully"
                     },
                     "data": {
                       "type": "object",
@@ -949,6 +945,7 @@
       "contact": {
         "type": "object",
         "required": [
+          "_id",
           "name",
           "phoneNumber",
           "contactType",
@@ -968,7 +965,7 @@
           "phoneNumber": {
             "type": "string",
             "description": "Contact phone number",
-            "example": "+1234567890"
+            "example": 1234567890
           },
           "contactType": {
             "type": "string",
@@ -1012,6 +1009,7 @@
       "user": {
         "type": "object",
         "required": [
+          "_id",
           "name",
           "email",
           "password"
@@ -1081,7 +1079,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Invalid request"
+                      "example": "Invalid request."
                     }
                   }
                 }
@@ -1155,7 +1153,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Something went wrong"
+                      "example": "Something went wrong."
                     }
                   }
                 }
@@ -1192,7 +1190,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Session not found"
+                      "example": "Session not found."
                     }
                   }
                 }
@@ -1229,7 +1227,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Contact not found"
+                      "example": "Contact not found."
                     }
                   }
                 }
