@@ -70,7 +70,7 @@
                 "name",
                 "email",
                 "phoneNumber",
-                "isFavorite",
+                "isFavourite",
                 "contactType",
                 "createdAt",
                 "updatedAt"
@@ -108,12 +108,12 @@
           },
           {
             "in": "query",
-            "name": "isFavorite",
+            "name": "isFavourite",
             "schema": {
               "type": "boolean",
               "example": true
             },
-            "description": "Filter by favorite contacts"
+            "description": "Filter by favourite contacts"
           }
         ],
         "responses": {
@@ -232,7 +232,7 @@
                     "example": "jojndoe@mail.com",
                     "description": "Contact email"
                   },
-                  "isFavorite": {
+                  "isFavourite": {
                     "type": "boolean",
                     "example": false,
                     "description": "Whether the contact is a favorite"
@@ -410,7 +410,7 @@
                     "description": "The email of the contact",
                     "example": "jojndoe@mail.com"
                   },
-                  "isFavorite": {
+                  "isFavourite": {
                     "type": "boolean",
                     "description": "Whether the contact is a favorite",
                     "example": false
@@ -518,7 +518,7 @@
         }
       }
     },
-    "/auyh/register": {
+    "/auth/register": {
       "post": {
         "tags": [
           "Auth"
