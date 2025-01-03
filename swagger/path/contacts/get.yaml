@@ -28,7 +28,7 @@ parameters:
           name,
           email,
           phoneNumber,
-          isFavorite,
+          isFavourite,
           contactType,
           createdAt,
           updatedAt,
@@ -50,11 +50,11 @@ parameters:
       example: personal
     description: 'Filter by contact type'
   - in: query
-    name: isFavorite
+    name: isFavourite
     schema:
       type: boolean
       example: true
-    description: 'Filter by favorite contacts'
+    description: 'Filter by favourite contacts'
 responses:
   '200':
     description: 'Successfully found contacts'
