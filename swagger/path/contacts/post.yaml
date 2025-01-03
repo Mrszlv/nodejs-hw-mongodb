@@ -27,7 +27,7 @@ requestBody:
             type: string
             example: jojndoe@mail.com
             description: 'Contact email'
-          isFavorite:
+          isFavourite:
             type: boolean
             example: false
             description: 'Whether the contact is a favorite'
