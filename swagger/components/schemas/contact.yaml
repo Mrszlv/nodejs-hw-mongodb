@@ -30,7 +30,7 @@ properties:
     type: string
     description: 'Contact email'
     example: jojndoe@mail.com
-  isFavorite:
+  isFavourite:
     type: boolean
     description: 'Contact is favorite'
     example: false
